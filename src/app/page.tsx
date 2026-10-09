@@ -11,7 +11,9 @@ import clsx from "clsx";
 
 export default function IndexPage() {
   const [aboutMe, setAboutMe] = useState(false);
+  const [experience, setExperience] = useState(false);
   const [projects, setProjects] = useState(false);
+  const [skills, setSkills] = useState(false);
   const [contact, setContact] = useState(false);
   const [resume, setResume] = useState(false);
 
@@ -25,59 +27,102 @@ export default function IndexPage() {
   const handleAboutMe = () => {
     setAboutMe(true);
     return setFlow([
-        ...flow,
-        <>
-            <MessageGroup
-                user
-                messages={[
-                    {
-                        key: "about",
-                        content: "tell me more about yourself",
-                    },
-                ]}
-            />
+      ...flow,
+      <>
+        <MessageGroup
+          user
+          messages={[
+            {
+              key: "about",
+              content: "tell me more about yourself",
+            },
+          ]}
+        />
 
-            <MessageGroup
-                messages={[
-                    {
-                        key: "about-1",
-                        content:
-                            "I am a 21-year-old Software Engineer from [Nagpur, Maharashtra](https://en.wikipedia.org/wiki/Nagpur). My journey in technology is exciting and full of learning. I enjoy exploring and working on both full-stack development and cybersecurity.",
-                    },
-                    {
-                        key: "about-2",
-                        content:
-                            "My favorite subjects are [Programming](https://en.wikipedia.org/wiki/Programming), [Operating Systems](https://en.wikipedia.org/wiki/Operating_system), [Computer Networks](https://en.wikipedia.org/wiki/Computer_network), and [Computer Security](https://en.wikipedia.org/wiki/Computer_security). Alongside my studies, I love diving into these fields to improve my skills and understanding.",
-                    },
-                    {
-                        key: "about-3",
-                        content:
-                            "With a strong foundation in development and security, I am eager to continue learning and growing. I’m passionate about solving problems and making a positive impact in the world of technology. I look forward to seeing where my love for innovation will take me next.",
-                    },
-                    {
-                        key: "digital-profiles",
-                        content: "Digital Profiles:",
-                    },
-                    {
-                        key: "profiles-1",
-                        content:
-                            "+ [Hackerrank](https://www.hackerrank.com/profile/prathameshratthe)\n-----",
-                    },
-                    {
-                        key: "profiles-2",
-                        content:
-                            "+ [LeetCode](https://leetcode.com/u/prathameshratthe/)\n-----",
-                    },
-                    {
-                        key: "profiles-3",
-                        content:
-                            "+ [Coding Ninjas](https://www.naukri.com/code360/profile/f98dc84b-cffa-4557-bfb1-9d588de14038)",
-                    },
-                ]}
-            />
-        </>,
+        <MessageGroup
+          messages={[
+            {
+              key: "about-1",
+              content:
+                "I'm a Gen AI Engineer from [Nagpur, Maharashtra](https://en.wikipedia.org/wiki/Nagpur), currently working at [Tata Consultancy Services](https://www.tcs.com/). I hold a B.Tech in Computer Science (Cyber Security) from [Shri Ramdeobaba College of Engineering and Management](https://rknec.edu/) (2021–2025).",
+            },
+            {
+              key: "about-2",
+              content:
+                "I specialize in developing and deploying enterprise AI solutions using [Large Language Models](https://en.wikipedia.org/wiki/Large_language_model), Python, FastAPI, AI agents, automation workflows, and cloud-native technologies.",
+            },
+            {
+              key: "about-3",
+              content:
+                "During college, I served as Secretary and Joint Secretary of the Cybersecurity Students' Executive Council. I also organized AARHANT'23, a week-long cybersecurity awareness event with participation from over 1500 students.",
+            },
+            {
+              key: "about-4",
+              content:
+                "I'm certified in [Google Project Management](https://www.coursera.org/professional-certificates/google-project-management), [Google IT Support](https://www.coursera.org/professional-certificates/google-it-support), [Zscaler Zero Trust Cloud Associate](https://www.zscaler.com/), and I hold a patent for a Secure Health Data System from the Indian Patent Office.",
+            },
+            {
+              key: "digital-profiles",
+              content: "Digital Profiles:",
+            },
+            {
+              key: "profiles-1",
+              content:
+                "+ [GitHub](https://github.com/prathameshratthe)\n-----",
+            },
+            {
+              key: "profiles-2",
+              content:
+                "+ [LinkedIn](https://www.linkedin.com/in/prathameshratthe)\n-----",
+            },
+            {
+              key: "profiles-3",
+              content:
+                "+ [LeetCode](https://leetcode.com/u/prathameshratthe/)",
+            },
+          ]}
+        />
+      </>,
     ]);
-};
+  };
+
+  const handleExperience = () => {
+    setExperience(true);
+    return setFlow([
+      ...flow,
+      <>
+        <MessageGroup
+          user
+          messages={[
+            {
+              key: "experience",
+              content: "where do you work?",
+            },
+          ]}
+        />
+
+        <MessageGroup
+          messages={[
+            {
+              key: "experience-1",
+              content:
+                "I'm currently working as a **Gen AI Engineer** at [Tata Consultancy Services](https://www.tcs.com/) (Dec 2025 – Present) in Nagpur, Maharashtra.",
+            },
+            {
+              key: "experience-2",
+              content:
+                "I contribute to the development and deployment of enterprise Generative AI solutions for global clients including [Siemens Energy](https://www.siemens-energy.com/) and [Airbus](https://www.airbus.com/).",
+            },
+            {
+              key: "experience-3",
+              content:
+                "My work spans AI application development, backend engineering, enterprise integrations, cloud deployments, testing, monitoring, and CI/CD — all within Agile teams building scalable AI solutions.",
+            },
+          ]}
+        />
+      </>,
+    ]);
+  };
 
   const handleProjects = () => {
     setProjects(true);
@@ -89,7 +134,7 @@ export default function IndexPage() {
           messages={[
             {
               key: "projects",
-              content: "what have you done in life?",
+              content: "what have you built?",
             },
           ]}
         />
@@ -99,12 +144,80 @@ export default function IndexPage() {
             {
               key: "project-1",
               content:
-                "One of my key projects is a [VulneraTrack](https://github.com/prathameshratthe/VulneraTrack). This web browser extension continuously monitors website safety in real-time and provides users with critical information to enhance their protection against cyber risks.",
+                "**iR2D.ai Enterprise AI Platform** — An internal TCS product where I contributed to enterprise GenAI solutions using LLMs, Python, FastAPI, REST APIs, prompt engineering, and cloud-native services.",
             },
             {
               key: "project-2",
               content:
-                "Another important project is [SecureMedicos](https://github.com/prathameshratthe/SecureMedicos), an web-application that securely stores sensitive pharmaceutical data on the cloud using homomorphic encryption.",
+                "**Siemens Energy – Enterprise Generative AI Solutions** — Contributed to the development and deployment of AI-driven enterprise applications using LLMs, API integrations, workflow automation, and CI/CD practices.",
+            },
+            {
+              key: "project-3",
+              content:
+                "**SuccessFactors Custom Forms AI Agent** — Built an AI-powered document automation solution for converting PDF, DOCX, and ZIP forms into fillable PDFs using document parsing, semantic field detection, layout analysis, and automated PDF generation.",
+            },
+            {
+              key: "project-4",
+              content:
+                "**SAP BTP AI Automation & MCP Integration** — Developed AI automation services on SAP BTP Cloud Foundry with backend APIs, enterprise integrations, MCP connectivity, deployment, and security configurations.",
+            },
+          ]}
+        />
+      </>,
+    ]);
+  };
+
+  const handleSkills = () => {
+    setSkills(true);
+    return setFlow([
+      ...flow,
+      <>
+        <MessageGroup
+          user
+          messages={[
+            {
+              key: "skills",
+              content: "what's your tech stack?",
+            },
+          ]}
+        />
+
+        <MessageGroup
+          messages={[
+            {
+              key: "skills-1",
+              content:
+                "**Generative AI** — Large Language Models, Prompt Engineering, RAG, AI Agents, AI Automation, Document Intelligence, Semantic Search.",
+            },
+            {
+              key: "skills-2",
+              content:
+                "**Enterprise Platforms** — SAP BTP, SAP SuccessFactors, Cloud Foundry, Model Context Protocol (MCP).",
+            },
+            {
+              key: "skills-3",
+              content:
+                "**Backend** — Python, FastAPI, REST APIs, API Integration, Microservices.",
+            },
+            {
+              key: "skills-4",
+              content:
+                "**Frontend** — React, JavaScript, TypeScript.",
+            },
+            {
+              key: "skills-5",
+              content:
+                "**Cloud & DevOps** — AWS, Docker, CI/CD, Git, GitHub Actions.",
+            },
+            {
+              key: "skills-6",
+              content:
+                "**Databases** — PostgreSQL, MySQL, Redis.",
+            },
+            {
+              key: "skills-7",
+              content:
+                "**Security** — JWT, OAuth, AES, RSA Encryption, Secure API Architecture.",
             },
           ]}
         />
@@ -140,6 +253,10 @@ export default function IndexPage() {
 + [LinkedIn](https://www.linkedin.com/in/prathameshratthe)
 -----
 + [Email](mailto:prathameshratthe@gmail.com)
+-----
++ [GitHub](https://github.com/prathameshratthe)
+-----
++ [Phone](tel:+919022456723)
               `,
             },
           ]}
@@ -202,7 +319,7 @@ export default function IndexPage() {
             {
               key: "short-about-me",
               content:
-                "I'm a [21-year-old](https://en.wikipedia.org/wiki/February_21) software engineer passionate about both full-stack development and cybersecurity. My passion stems from a deep interest in technology and problem-solving.",
+                "I'm a Gen AI Engineer at [TCS](https://www.tcs.com/), building enterprise AI solutions for global clients like Siemens Energy and Airbus. I'm passionate about [Generative AI](https://en.wikipedia.org/wiki/Generative_artificial_intelligence), backend engineering, and cloud-native technologies.",
             },
             {
               key: "note",
@@ -231,12 +348,28 @@ export default function IndexPage() {
             about-me
           </Button>
           <Button
+            onClick={() => handleExperience()}
+            disabled={!!experience}
+            variant={"secondary"}
+            className={clsx("text-xs", !!experience && "hidden")}
+          >
+            work-experience
+          </Button>
+          <Button
             onClick={() => handleProjects()}
             disabled={!!projects}
             variant={"secondary"}
             className={clsx("text-xs", !!projects && "hidden")}
           >
-            what-have-i-done
+            my-projects
+          </Button>
+          <Button
+            onClick={() => handleSkills()}
+            disabled={!!skills}
+            variant={"secondary"}
+            className={clsx("text-xs", !!skills && "hidden")}
+          >
+            tech-stack
           </Button>
           <Button
             onClick={() => handleContact()}
@@ -244,7 +377,7 @@ export default function IndexPage() {
             variant={"secondary"}
             className={clsx("text-xs", !!contact && "hidden")}
           >
-            get-in-touch-with-me
+            get-in-touch
           </Button>
           <Button
             onClick={() => handleResume()}
