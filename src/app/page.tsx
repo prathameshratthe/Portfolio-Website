@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 
 import { motion } from "framer-motion";
+import { FileDown } from "lucide-react";
 
 import { ReactNode, useEffect, useRef, useState } from "react";
 import MessageGroup, { MessageCard } from "@/components/Message";
@@ -12,6 +13,7 @@ export default function IndexPage() {
   const [aboutMe, setAboutMe] = useState(false);
   const [projects, setProjects] = useState(false);
   const [contact, setContact] = useState(false);
+  const [resume, setResume] = useState(false);
 
   const [flow, setFlow] = useState<ReactNode[]>([]);
 
@@ -146,6 +148,39 @@ export default function IndexPage() {
     ]);
   };
 
+  const handleResume = () => {
+    setResume(true);
+    return setFlow([
+      ...flow,
+      <>
+        <MessageGroup
+          user
+          messages={[
+            {
+              key: "resume",
+              content: "can i see your resume?",
+            },
+          ]}
+        />
+
+        <MessageGroup
+          messages={[
+            {
+              key: "resume-1",
+              content:
+                "of course! here's my latest resume. feel free to download it and reach out if anything catches your eye.",
+            },
+            {
+              key: "resume-2",
+              content:
+                "+ [download resume (pdf)](/Prathamesh_Ratthe_Resume_2026.pdf)",
+            },
+          ]}
+        />
+      </>,
+    ]);
+  };
+
   return (
     <section className="relative px-4 flex flex-col items-center justify-center container max-w-2xl space-y-14 py-10">
       <motion.ul
@@ -210,6 +245,15 @@ export default function IndexPage() {
             className={clsx("text-xs", !!contact && "hidden")}
           >
             get-in-touch-with-me
+          </Button>
+          <Button
+            onClick={() => handleResume()}
+            disabled={!!resume}
+            variant={"secondary"}
+            className={clsx("text-xs gap-1.5", !!resume && "hidden")}
+          >
+            <FileDown className="size-3" />
+            download-resume
           </Button>
         </motion.div>
       </motion.ul>
